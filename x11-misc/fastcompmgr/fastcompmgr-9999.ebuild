@@ -26,7 +26,7 @@ src_prepare() {
 
 src_compile() {
 	env CC="$(tc-getCC)" \
-		CFLAGS="${CPPFLAGS}" \
+		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
 		make
 }
