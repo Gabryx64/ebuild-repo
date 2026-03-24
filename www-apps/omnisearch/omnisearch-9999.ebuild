@@ -41,8 +41,14 @@ src_install() {
 	insinto /etc/omnisearch
 	doins -r templates
 	doins -r static
-
-	newins example-config.ini config.ini
+	newins example-config.ini default-config.ini
 	dobin bin/omnisearch
 	doinitd init/openrc/omnisearch
 }
+
+pkg_postinst() {
+	if [ ! -f /etc/omnisearch/config.ini ]; then
+		cp /etc/omnisearch/default-config.ini /etc/omnisearch/config.ini
+	fi
+}
+
