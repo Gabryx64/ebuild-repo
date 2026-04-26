@@ -26,7 +26,7 @@ src_compile() {
 	env CC="$(tc-getCC)" \
 		CFLAGS="${CFLAGS}" \
 		LDFLAGS="${LDFLAGS}" \
-		make
+		emake
 }
 
 src_install() {
