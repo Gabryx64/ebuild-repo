@@ -7,7 +7,7 @@ PYTHON_COMPAT=( python3_{11..14} )
 inherit gnome.org meson python-any-r1 vala virtualx xdg
 
 DESCRIPTION="Building blocks for modern GNOME applications"
-HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libadwaita/ https://gitlab.gnome.org/GNOME/libadwaita"
+HOMEPAGE="https://gnome.pages.gitlab.gnome.org/libadwaita/ https://gitlab.gnome.org/GNOME/libadwaita https://github.com/silvertuanzi/libadwaita-without-adwaita"
 PATCHES=(
 	"${FILESDIR}"/theming_patch.diff
 )
