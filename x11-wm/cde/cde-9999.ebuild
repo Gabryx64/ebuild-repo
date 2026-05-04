@@ -64,30 +64,23 @@ src_prepare() {
   append-flags "-Wno-incompatible-pointer-types"
   default
 
-  # 2.5.x series uses autotools; autogen.sh is the canonical entry point.
-  if [[ -x ./autogen.sh ]]; then
-    einfo "Running upstream autogen.sh"
-    ./autogen.sh || die "autogen.sh failed"
-  fi
+  einfo "Running upstream autogen.sh"
+  ./autogen.sh || die "autogen.sh failed"
 }
 
 src_configure() {
-  append-cflags "-std=gnu99"
-  # Upstream defaults already install into /usr/dt and expect
-  # startx /usr/dt/bin/Xsession, so we don't try to FHS-relocate here.
-  econf \
+  econf --prefix="/usr/dt" \
     --sysconfdir=/etc \
     --localstatedir=/var
 }
 
 src_compile() {
-  append-cflags "-std=gnu99"
-
-  # Nothing special required; autotools build
-  default
+  emake CFLAGS="-std=c99 -I /usr/include/tirpc" LDFLAGS="-lm"
 }
 
 src_install() {
+  export LANG=C
+  export LC_ALL=C
   default
 
   # These are recommended/assumed by upstream docs
@@ -97,6 +90,10 @@ src_install() {
 
   # Calendar manager spool dir (used by dtcm/rpc.cmsd, even if buggy)
   dodir /usr/spool/calendar
+
+  insinto "/usr/dt/config/C/xfonts/"
+  doins "${FILESDIR}/fonts.alias"
+  doins "${FILESDIR}/fonts.dir"
 }
 
 pkg_postinst() {
