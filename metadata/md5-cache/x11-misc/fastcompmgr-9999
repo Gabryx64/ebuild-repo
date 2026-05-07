@@ -1,0 +1,14 @@
+BDEPEND=dev-util/pkgconf >=dev-vcs/git-1.8.2.1[curl]
+DEFINED_PHASES=compile install prepare unpack
+DEPEND=x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXrender
+DESCRIPTION=A fast compositor for X11
+EAPI=8
+HOMEPAGE=https://github.com/tycho-kirchner/fastcompmgr
+INHERIT=toolchain-funcs git-r3
+KEYWORDS=~alpha ~amd64 ~arm ~hppa ~ia64 ~ppc ~ppc64 ~s390 ~sh ~sparc ~x86
+LICENSE=MIT
+PROPERTIES=live
+RDEPEND=x11-libs/libX11 x11-libs/libXcomposite x11-libs/libXdamage x11-libs/libXfixes x11-libs/libXrender
+SLOT=0
+_eclasses_=git-r3	7b584b5dc33e3bc66ff5b9271bf41764	toolchain-funcs	58a918e3a42d0156f010dcfd43725be5
+_md5_=2a26c2c7aef61b41e825a65378c70310
